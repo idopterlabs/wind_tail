@@ -1,5 +1,7 @@
 # WindTail
 
+Try it out 👉 https://windtail.fly.dev/
+
 Demo app with boilerplate code including:
   * TailwindCSS
   * TailwindUI (Stacked Layout + Table)
