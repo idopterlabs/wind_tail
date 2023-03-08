@@ -16,19 +16,11 @@ defmodule WindTail.Test.TestA do
   end
 
   describe "request/1 with invalid credentials" do
-    setup do
-      config = Application.get_env(:wind_tail, WindTail.APIClient)
-
-      Application.put_env(:wind_tail, WindTail.APIClient, nil)
-
-      on_exit(fn ->
-        Application.put_env(:wind_tail, WindTail.APIClient, config)
-      end)
-    end
-
     test "raises error" do
+      invalid_credentials = %{}
+
       assert_raise RuntimeError, fn ->
-        WindTail.APIClient.request("api.foo.com")
+        WindTail.APIClient.request("api.foo.com", invalid_credentials)
       end
     end
   end

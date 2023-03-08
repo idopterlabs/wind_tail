@@ -11,9 +11,9 @@ defmodule WindTail.APIClient do
   @doc """
   Performs autheticated HTTP request against full_url
   """
-  @spec request(String.t()) :: :ok
-  def request(_full_url) do
-    config = get_config()
+  @spec request(String.t(), map() | nil) :: :ok
+  def request(_full_url, credentials \\ nil) do
+    config = credentials || get_config()
 
     credentials = %Credentials{
       client_id: config[:client_id],
