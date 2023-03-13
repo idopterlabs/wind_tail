@@ -28,15 +28,15 @@ import Alpine from "../vendor/alpine"
 
 window.Alpine = Alpine
 
-Alpine.start()
-
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket,
   {
     params: { _csrf_token: csrfToken },
     dom: {
       onBeforeElUpdated(from, to) {
-        if (from.__x) { Alpine.clone(from.__x, to) }
+        if (from._x_dataStack) {
+          window.Alpine.clone(from, to)
+        }
       }
     }
   })
